@@ -7,6 +7,9 @@ class City(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name_plural = "Cities"
 
 class Weather(models.Model):
     city = models.ForeignKey(City, on_delete=models.CASCADE)
@@ -15,3 +18,6 @@ class Weather(models.Model):
     temp = models.IntegerField()
     pressure = models.IntegerField()
     humidity = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = "Weather"

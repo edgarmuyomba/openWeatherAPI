@@ -7,4 +7,4 @@ class CityAdmin(admin.ModelAdmin):
 
 @admin.register(Weather)
 class WeatherAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["city", "condition"]
