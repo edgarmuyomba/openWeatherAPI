@@ -1,0 +1,2 @@
+# openWeatherAPI
+An openWeatherAPI clone.
