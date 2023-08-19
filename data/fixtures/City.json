@@ -1,0 +1,92 @@
+[
+    {
+        "model": "data.City",
+        "pk": 1,
+        "fields": {
+            "lat": 159.81,
+            "lon": 160.31,
+            "name": "Kampala"
+        }
+    },
+    {
+        "model": "data.City",
+        "pk": 2,
+        "fields": {
+            "lat": 155.82,
+            "lon": 170.81,
+            "name": "Nairobi"
+        }
+    },
+    {
+        "model": "data.City",
+        "pk": 3,
+        "fields": {
+            "lat": 165.94,
+            "lon": 155.16,
+            "name": "Arusha"
+        }
+    },
+    {
+        "model": "data.City",
+        "pk": 4,
+        "fields": {
+            "lat": 164.42000000000002,
+            "lon": 170.33,
+            "name": "Mombasa"
+        }
+    },
+    {
+        "model": "data.City",
+        "pk": 5,
+        "fields": {
+            "lat": 159.81,
+            "lon": 152.8,
+            "name": "Jinja"
+        }
+    },
+    {
+        "model": "data.City",
+        "pk": 6,
+        "fields": {
+            "lat": 153.45000000000002,
+            "lon": 174.41,
+            "name": "Kabale"
+        }
+    },
+    {
+        "model": "data.City",
+        "pk": 7,
+        "fields": {
+            "lat": 179.8,
+            "lon": 172.58,
+            "name": "Zanzibar"
+        }
+    },
+    {
+        "model": "data.City",
+        "pk": 8,
+        "fields": {
+            "lat": 165.99,
+            "lon": 164.25,
+            "name": "Mbale"
+        }
+    },
+    {
+        "model": "data.City",
+        "pk": 9,
+        "fields": {
+            "lat": 177.15,
+            "lon": 170.75,
+            "name": "Kinshasa"
+        }
+    },
+    {
+        "model": "data.City",
+        "pk": 10,
+        "fields": {
+            "lat": 156.89000000000001,
+            "lon": 179.96,
+            "name": "Kigali"
+        }
+    }
+]
