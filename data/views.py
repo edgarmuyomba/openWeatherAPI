@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from .models import *
 from datetime import datetime, timedelta
 from .serializers import *
 from django.db.models import Q
+from .permissions import *
 
 def getCityWeather(request):
     '''
@@ -35,6 +36,7 @@ def currentWeather(request):
     return Response(data=serializer.data)
 
 @api_view(['GET'])
+@permission_classes([PremiumPerm])
 def hourly(request):
     weatherInstances = getCityWeather(request)
     start = datetime.now()
@@ -57,6 +59,7 @@ def getTimeStamps(start):
     return timeStamps
 
 @api_view(['GET'])
+@permission_classes([DiscountPerm])
 def daily(request):
     weatherInstances = getCityWeather(request)
 
@@ -70,3 +73,9 @@ def daily(request):
     instances = weatherInstances.filter(dt__in=timeStamps)
     serializer = WeatherSerializer(instances, many=True)
     return Response(data=serializer.data)
+
+'''
+    authentication, authorization
+    free tier, 50%, premium
+    groups for authorization and tokens and sessions for authentication
+'''
