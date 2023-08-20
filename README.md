@@ -11,7 +11,6 @@ This project is a clone of the OpenWeatherAPI implemented using Django Rest Fram
 - [Authentication](#authentication)
 - [Subscription](#subscription)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -20,7 +19,6 @@ This project is a clone of the OpenWeatherAPI implemented using Django Rest Fram
 - Access weather every hour for the next 4 days (available to premium subscribers).
 - Subscription-based system with discount and premium options.
 - RESTful API design using Django Rest Framework.
-- [Add more features here...]
 
 ## Installation
 
@@ -51,14 +49,16 @@ This project is a clone of the OpenWeatherAPI implemented using Django Rest Fram
 To use this API, you can make requests to the provided endpoints using a tool like curl or through a tool like Postman. Below are the available endpoints and their functionalities.
 
 ## Endpoints
-GET /data/weather/?location={location}
+GET /data/weather/?city={location}
 Get the current weather for the specified location.
 
-GET /data/daily/?location={location}
+GET /data/daily/?city={location}
 Get weather every 3 hours for the next 3 days for the specified location.
 
-GET /data/hourly/?location={location}
+GET /data/hourly/?city={location}
 Get weather every hour for the next 4 days for the specified location (premium feature).
+
+Each of these requests can also be made using the ?lat={lat}&lon={lon} (coordinates) of the city.
 
 ## Authentication
 Authentication is required to access certain features. You can use token-based authentication. Include the generated token in the headers of your requests
