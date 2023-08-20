@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from .serializers import *
 from django.db.models import Q
 
-def getCity(request):
+def getCityWeather(request):
     '''
     helper function to retrive the city in question based on either its name or coordinates
     '''
@@ -19,13 +19,11 @@ def getCity(request):
         lat = request.GET.get('lat')
         lon = request.GET.get('lon')
         city = City.objects.get(lat=lat, lon=lon)
-    return city
+    return Weather.objects.filter(city=city)
 
 @api_view(['GET'])
 def currentWeather(request):
-    city = getCity(request)
-
-    weatherInstances = Weather.objects.filter(city=city)
+    weatherInstances = getCityWeather(request)
     cT = datetime.now()
 
     if cT.minute != 0:
@@ -38,9 +36,7 @@ def currentWeather(request):
 
 @api_view(['GET'])
 def hourly(request):
-    city = getCity(request)
-    
-    weatherInstances = Weather.objects.filter(city=city)
+    weatherInstances = getCityWeather(request)
     start = datetime.now()
 
     if start.minute != 0:
@@ -50,5 +46,27 @@ def hourly(request):
     end = start + timedelta(hours=96)
     lookup = Q(dt__lt=start) | Q(dt__gt=end)
     instances = weatherInstances.exclude(lookup)
+    serializer = WeatherSerializer(instances, many=True)
+    return Response(data=serializer.data)
+
+def getTimeStamps(start):
+    timeStamps = [start]
+    for i in range(23):
+        start = start + timedelta(hours=3)
+        timeStamps.append(start)
+    return timeStamps
+
+@api_view(['GET'])
+def daily(request):
+    weatherInstances = getCityWeather(request)
+
+    start = datetime.now()
+
+    if start.minute != 0:
+        start = datetime(year=start.year, month=start.month,
+                               day=start.day, hour=start.hour, minute=0)
+    
+    timeStamps = getTimeStamps(start)
+    instances = weatherInstances.filter(dt__in=timeStamps)
     serializer = WeatherSerializer(instances, many=True)
     return Response(data=serializer.data)
