@@ -20,4 +20,5 @@ class Weather(models.Model):
     humidity = models.IntegerField()
 
     class Meta:
+        ordering = ['dt']
         verbose_name_plural = "Weather"

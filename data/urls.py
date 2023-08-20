@@ -4,11 +4,11 @@ from .views import *
 app_name = 'data'
 
 urlpatterns = [
-    path('weather/', currentWeather, name="current-weather")
+    path('weather/', currentWeather, name="current-weather"),
+    path('hourly/', hourly, name="96-hours")
 ]
 
 '''
-    weather?
     hourly?
     daily?
 '''
